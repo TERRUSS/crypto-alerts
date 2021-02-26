@@ -64,6 +64,22 @@
 							<p>You will receive the notifications you set up at this address.</p>
 						</div>
 
+						<div class="columns">
+							<div class="column">
+								<b-button 
+									class="is-danger"
+									@click="deleteAccount()"
+								>
+									<b-icon
+										style="margin-right: 3px"
+										pack="fas"
+										icon="user-slash">
+									</b-icon>
+									Delete account
+								</b-button>
+							</div>
+						</div>
+
 					</div>
 					<footer class="card-footer">
 						<a class="card-footer-item" 
@@ -80,6 +96,7 @@
 </template>
 
 <script>
+import * as api from '../helpers/api.js'
 export default {
 	name: 'Settings',
 	props: ['email', 'token'],
@@ -89,6 +106,20 @@ export default {
 			alerts: true,
 
 			isComponentModalActive: false,
+		}
+	},
+
+	methods: {
+		deleteAccount: function () {
+			api.post("/deleteAccount")
+			.then((r)=>{
+				if (r.message)
+					this.$toast.success(r.message)
+			})
+			.catch( r => {
+				if (r.error)
+					this.$toast.warning(r.error)
+			})
 		}
 	}
 }

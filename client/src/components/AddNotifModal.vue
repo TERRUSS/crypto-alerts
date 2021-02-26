@@ -73,6 +73,7 @@
 
 <script>
 import * as api from '../helpers/api.js'
+import cryptos from '@/assets/all_cryptos.json'
 
 export default {
 	name: 'AddNotifModal',
@@ -86,9 +87,7 @@ export default {
 	data() {
 		return {
 			crypto: 'BTC',
-			avaliableCryptos: [
-				"BTC", "ETH"
-			],
+			avaliableCryptos: cryptos.all_cryptos,
 			alertOnRise: true,
 			ceiling: 1000,
 		}
@@ -123,6 +122,7 @@ export default {
 		}
 	},
 	mounted() {
+
 		if (this.$props.edit) {
 			if (this.$props.data) {
 				this.$data.crypto = this.$props.data.crypto
