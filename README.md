@@ -37,10 +37,10 @@ DOMAIN='https://your.domain.name' # <- this is for the mail body
 * Switch to dev environment : `pipenv shell`
 * Install the deps : `make init`
 * Run the server in development mode (ie. expose the rest-api) : `make run`
-* Run the server in production mode (like the dev mode, but detached for tty) : `make run-prod`
 
 NOTE : You may want to get the client compiled `client/` to enjoy the web application client before start the server.
 
+NOTE2 : Also, change the SECRET_KEY value in `server/crypto_notif/settings.py` before pushing to production ;)
 ### Client
 
 `cd client/`
